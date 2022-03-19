@@ -132,7 +132,7 @@ public class SomeIntegrationTest2  extends  Testing  {
 }
 
 ```
-  실행!!🏍
+실행!!🏍 
   ![image](https://user-images.githubusercontent.com/67067346/159113804-5dccfa84-87d4-4f19-b564-cd21aaaea976.png)
 
   ![image](https://user-images.githubusercontent.com/67067346/159113835-0a9caddb-6ee2-474c-a01d-bf812c37a7e4.png)
