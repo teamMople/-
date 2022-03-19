@@ -108,7 +108,7 @@ public class SomeIntegrationTest2  extends  Testing  {
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ContextConfiguration(
-        classes = {  ConfigA.class }
+        classes = {  ConfigA.class,ConfigB.class }
 )
 public abstract class Testing {
     @Autowired
