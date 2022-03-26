@@ -40,8 +40,18 @@ getConnection이 일등공신...!
      DataIntegrityViolationException를 RestControllerAdvice에서 처리하는 방식으로 전환 
      이렇게 되면 query는 1번만 나간다( DB가 이미 생성되었다면 @Column(unique = true)는 작동하지 않는다 ! 따라서 create 하자) 
      뭔가 굉장히 기본적인 부분을 놓친듯...
+# 궁금한 내용! 
+    아래 사진들은 Vuser를 180명이 회원가입 요청시 사진이다.   
+    나는 전에 PK를  GenerationType.IDENTITY로 교체해서 Connection 수를 절약했다. 단점,의문점
+        ->매번의 save호출시 매번 Transaction이 발생한다... 그렇다고 AUTO를 사용하면Connection이 낭비??된다 둘중에 어떤걸 선택할까...?    
+    그리고 바보같은 실수를 발견했다 -> Beanstalk의 로드밸런싱이 작동하지 않았다 !! cpu 사용률을 보고 알게되었다. 확인하니 최소 인스턴스 수가 1개더라...
     
-### 또 어디를 개선할지... 아직은 모르겠다!!
+   ![image](https://user-images.githubusercontent.com/67067346/160248643-80e6fbd5-7c71-411d-b5c2-50df140d95af.png)![image](https://user-images.githubusercontent.com/67067346/160248662-20e34e0f-1caa-47a7-8801-413942f97a31.png)    
+   그리고 이번에도 getConnection에서 엄청난 시간이 소요된다.어떻게 해결할까??( 그냥 rds 용량 올리고싶다 ㅋㅋ╰(*°▽°*)╯)
+   ![image](https://user-images.githubusercontent.com/67067346/160249499-234149df-5fa4-441a-926b-bc0b56095afc.png)
+
+   
+
      
      
 
