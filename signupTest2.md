@@ -33,8 +33,18 @@ getConnection이 일등공신...!
 # 어디를 개선하나...?
     다른 요청들이 빠르게 Connection을 획득하게 Query를 더 빠르게 해보자 !! 
     insert into member (created_at, description, email, nickname, password, profile_image_url, updated_at)
-     현재 회원가입 요청시
+     현재 회원가입 요청시  memberRepository.existsMemberByEmail(email)라는 함수를 실행한다 
+     이렇게 되면 existsMemberByEmail를 얻기위한 getConnection이 또 필요해짐...!
+# 1차 코드 개선 
+     existsMemberByEmail를 제거하고 email table에 @Column(unique = true)를 주고 
+     DataIntegrityViolationException를 RestControllerAdvice에서 처리하는 방식으로 전환 
+     이렇게 되면 query는 1번만 나간다( DB가 이미 생성되었다면 @Column(unique = true)는 작동하지 않는다 ! 따라서 create 하자) 
+     뭔가 굉장히 기본적인 부분을 놓친듯...
     
+### 또 어디를 개선할지... 아직은 모르겠다!!
+     
+     
+
 
 
 
