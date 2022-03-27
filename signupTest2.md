@@ -59,6 +59,7 @@ getConnection이 일등공신...!
 문제2. 어떤 요청들은 Connection을 빨리 얻지만 다른 요청들은 Connecction을 얻기까지 여전히 시간이 많이 걸린다(최대 15초) 
 
 ### 시도한 해결책
+![image](https://user-images.githubusercontent.com/67067346/160278981-0dee2bbe-8503-4b53-8bf7-78199d97f233.png)   
 
 signupRequest라는 함수 자체의 실행 시간을 줄이는 방법으로 시도했다.   
 작성한 코드를 보다가 불필요한 부분을 발견했다.   
