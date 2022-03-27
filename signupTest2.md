@@ -42,15 +42,35 @@ getConnection이 일등공신...!
      뭔가 굉장히 기본적인 부분을 놓친듯...
 # 궁금한 내용! 
     아래 사진들은 Vuser를 180명이 회원가입 요청시 사진이다.   
-    나는 전에 PK를  GenerationType.IDENTITY로 교체해서 Connection 수를 절약했다. 단점,의문점
-        ->매번의 save호출시 매번 Transaction이 발생한다... 그렇다고 AUTO를 사용하면Connection이 낭비??된다 둘중에 어떤걸 선택할까...?    
-    그리고 바보같은 실수를 발견했다 -> Beanstalk의 로드밸런싱이 작동하지 않았다 !! cpu 사용률을 보고 알게되었다. 확인하니 최소 인스턴스 수가 1개더라...
-    
+    나는 전에 PK를  GenerationType.IDENTITY로 교체해서 Connection 수를 절약했다
+    매번의 save호출시 매번 Transaction이 발생한다     
    ![image](https://user-images.githubusercontent.com/67067346/160248643-80e6fbd5-7c71-411d-b5c2-50df140d95af.png)![image](https://user-images.githubusercontent.com/67067346/160248662-20e34e0f-1caa-47a7-8801-413942f97a31.png)    
    그리고 이번에도 getConnection에서 엄청난 시간이 소요된다.어떻게 해결할까??( 그냥 rds 용량 올리고싶다 ㅋㅋ╰(*°▽°*)╯)
    ![image](https://user-images.githubusercontent.com/67067346/160249499-234149df-5fa4-441a-926b-bc0b56095afc.png)
-
    
+   
+# EB의 로드밸런싱 기능을 활성화 했다.
+  Vuser: 180명
+![image](https://user-images.githubusercontent.com/67067346/160271000-448253c0-bc2c-45df-bbad-4b991814ca4e.png)    
+   
+    
+나는 총 2대의 인스턴스를 사용중이다.
+문제1. 2대 모두 CPU사용률이 92~ 98을 오르락 내리락한다
+문제2. 어떤 요청들은 Connection을 빨리 얻지만 다른 요청들은 Connecction을 얻기까지 여전히 시간이 많이 걸린다(최대 15초) 
+
+### 시도한 해결책
+
+signupRequest라는 함수 자체의 실행 시간을 줄이는 방법으로 시도했다.   
+작성한 코드를 보다가 불필요한 부분을 발견했다.   
+```java 
+      signupReqestDto.setPassword(passwordEncoder.encode(signupReqestDto.getPassword()));
+      Member member = memberRepository.save(new Member(signupReqestDto));
+```    
+위의 코드를 
+```java 
+        Member member = memberRepository.save(new Member(signupReqestDto,passwordEncoder.encode(signupReqestDto.getPassword()));
+``` 
+이렇게 바꾸었다.불필요하게  setPassword를 호출하지 않아도 된다.
 
      
      
