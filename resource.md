@@ -42,6 +42,9 @@
   
 ### 6.reset_timedout_connection
   닫힌 소켓이(서버의 응답은 받는게 가능한 상태이다)Fin_wait1상태로 오랫동안 유지되는 상태를 방지해준다.현재 채팅프로그램에서 socket이 닫힌경우 서버에서 Fin_wait1 상태가 발생하는듯 했다 ... !
+  
+### 6.resolver_timeout 
+  😣😅😣😅건들지말자
 
 
     
