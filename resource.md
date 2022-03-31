@@ -45,6 +45,13 @@
   
 ### 6.resolver_timeout 
   😣😅😣😅건들지말자
+  
+## 1~6의 과정을 적용하고 얻은 결과
+  모두 1000명의 Vuser로 테스트를 진행했다   
+  응답까지의 시간이 많이 줄었다.
+  여전히 시간이 오래 걸리는 이유은 db가 t2.micro여서 connection이 부족하다보니 발생하는듯...?   
+![image](https://user-images.githubusercontent.com/67067346/161141817-0dc49a23-0717-41a0-8575-059c7b4c4e99.png)
+
 
 
     
