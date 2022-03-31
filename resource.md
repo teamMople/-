@@ -52,6 +52,12 @@
   여전히 시간이 오래 걸리는 이유은 db가 t2.micro여서 connection이 부족하다보니 발생하는듯...?   
 ![image](https://user-images.githubusercontent.com/67067346/161141817-0dc49a23-0717-41a0-8575-059c7b4c4e99.png)
 
+## 7.reuseport
+    listen        80 default_server reuseport;  
+    이렇게 설정해서 socket을 재사용😁
+
+
+
 
 
     
