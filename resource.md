@@ -23,8 +23,7 @@
    결과는 성공적이다 !! 처음에 처리 가능한 요청들이 늘어나서 그래프가 굵직하게 뭉쳐서 나타나고,중반에도 처리시간이 확연히 줄어든게 보인다!!😁😁😁  
    이번엔 4096으로 설정했다   
    ![image](https://user-images.githubusercontent.com/67067346/161124336-a4fed6b7-2ef7-44c7-96ec-0b8a1ae799b6.png)  
-   변한게 없어서 다시 2048로 설정했다가  서버의 에러 로그를 보고 다시 늘려주었다.  
-   ![image](https://user-images.githubusercontent.com/67067346/161153053-bb460a6f-dafa-499b-b08f-575bed8c1cc0.png)  
+   나중에 성능이 더 나오지 않아서 2048로 교체했다.  
    
  ## tcp설정
 ### 1.tcp_nopush 
@@ -71,6 +70,14 @@
   1.default로 할당된 32768 ~ 60999의 포트 범위를 10240 ~ 65535로 늘려준다.  
    하지만 이는 임시방편이다.만약 또 많은 포트들이 Time_Wait에 빠진다면??   
   2.Time_Wait인 소켓을 재사용한다.그러면 Time_Wait에 빠진 수많은 소켓들을 효율적으로 사용 가능하다.
+
+
+## 결과 😎😎 
+  ![image](https://user-images.githubusercontent.com/67067346/161159732-67151696-bcf0-4817-9f73-9bcb867fefa2.png)     
+  빨간 동그라미에 잘 뭉쳐져있다.즉 응답속도가 빠르다!! 그리고 응답 속도 그래프를 보다가 최대 60개 까지 올라가는 응답그래프를 보았다  
+  아래 사진은 캡쳐타이밍을 못맞췄다😆  현재 로드 밸런서를 이용해서 2대의 ec2를 관리하고 1대의 db를 t2.micro를 이용해서 관리한다.  
+  현재 db의 최대 Connection수는 66이다.모든 Connection이 소비되면 다른 요청들은 getConnection을 호출하고 기다린다.만약 여기서  TimeOut이 되면 예외가 던져진다(Noooooooooooooooooooooo...)
+  ![image](https://user-images.githubusercontent.com/67067346/161159380-6ddc58fd-df2a-4a54-81b5-8a5e6e235230.png)
   
 
 
