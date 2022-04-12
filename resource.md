@@ -1,3 +1,4 @@
+과정들 https://boilerplate-hanghae99.notion.site/TroubleShooting_BE-49d293ccbd0243959f4f400105aae4c7
 # 효율적인 자원관리에 도전!!  
 서버를 증설하는건 너무나 쉽다.그래서 주어진 자원을 최대한 효율적으로 사용하는 방법들을 습득하고싶다.  
 
