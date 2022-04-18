@@ -1,4 +1,6 @@
-과정들 https://boilerplate-hanghae99.notion.site/TroubleShooting_BE-49d293ccbd0243959f4f400105aae4c7
+과정들 https://boilerplate-hanghae99.notion.site/TroubleShooting_BE-49d293ccbd0243959f4f400105aae4c7   
+https://github.com/HomoEfficio/dev-tips/blob/master/JPA-GenerationType-%EB%B3%84-INSERT-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90.md 
+위의 링크를 보면 MySql에선 IDENTITY방식이 더 빠르게 작동한다.   
 # 효율적인 자원관리에 도전!!  
 서버를 증설하는건 너무나 쉽다.그래서 주어진 자원을 최대한 효율적으로 사용하는 방법들을 습득하고싶다.  
 
